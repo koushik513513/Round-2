@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock Paper Scissors Game</title>
+    <style>
+        /* Add CSS styles for the box shadow */
+        .game-img {
+            border-radius: 70%;
+            box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.5);
+            margin: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+       <center><h1>Rock Paper Scissors Game</h1>
+    <!--  this block of the code contains button and images -->
+     <div class="">
+
+    <img src="rock.png" alt="Rock" onclick="playerChoice('rock')" class="game-img">
+    <img src="scissors.png" alt="Paper" onclick="playerChoice('paper')" class="game-img" style="height: 223px;">
+    <img src="paper.png" alt="Scissors" onclick="playerChoice('scissors')" class="game-img">
+    
+    <p id="result"></p>
+
+    <script>
+        function playerChoice(playerMove) {
+            const moves = ['rock', 'paper', 'scissors'];
+            const computerMove = moves[Math.floor(Math.random() * moves.length)];
+
+            const result = determineWinner(playerMove, computerMove);
+
+            displayResult(playerMove, computerMove, result);
+        }
+
+        function determineWinner(player, computer) {
+            if (player === computer) {
+                return 'It\'s a tie!';
+            } else if (
+                (player === 'rock' && computer === 'scissors') ||
+                (player === 'paper' && computer === 'rock') ||
+                (player === 'scissors' && computer === 'paper')
+            ) {
+                return 'You win!';
+            } else {
+                return 'Computer wins!';
+            }
+        }
+
+        function displayResult(player, computer, result) {
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = `${result}`;
+        }
+
+    </script>
+</div>
+</center>
+</body>
+</html>
